@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { SplashScreen } from './components/SplashScreen';
@@ -250,6 +251,7 @@ const App: React.FC = () => {
           <ErrorBoundary>
             <AppRoutes />
           </ErrorBoundary>
+          <SpeedInsights />
         </Router>
       </LanguageProvider>
     </AuthProvider>
