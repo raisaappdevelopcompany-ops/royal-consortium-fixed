@@ -22,6 +22,16 @@ export default function ShopPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('newest');
 
+  const categoryMap: { [key: string]: string } = {
+    'helmets-safety-gear': '1',
+    'parts-modifications': '2',
+    'accessories': '3',
+    'maintenance-tools': '4',
+    'riding-gear': '5',
+    'body-parts': '6',
+    'electronics': '7',
+  };
+
   const categories = [
     { id: 'all', name: 'সব পণ্য' },
     { id: 'helmets-safety-gear', name: t('category.helmets') },
@@ -36,7 +46,8 @@ export default function ShopPage() {
 
     // Filter by category
     if (selectedCategory !== 'all') {
-      result = result.filter((p) => p.category === selectedCategory);
+      const categoryId = categoryMap[selectedCategory];
+      result = result.filter((p) => p.category_id === categoryId);
     }
 
     // Filter by search
